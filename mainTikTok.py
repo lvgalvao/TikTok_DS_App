@@ -2,13 +2,14 @@ from GetDataTikTok import TikTokGet_Meta
 import PutDataIntoS3
 import json
 import boto3
-from datetime import date
+from datetime import date, datetime
 
 today = date.today()
+hour = datetime.now().day
+
 contas = [
         "@flaviacharallo",
         "@gkay",
-        "@farofadagkayvideos",
         "@multishow",
         "@tirullipa",
         "@keyrochaa",
@@ -44,6 +45,6 @@ for conta in contas:
     data = TikTokGet_Meta(conta)
     s3 = boto3.resource('s3')
     json_file = json.dumps(data, indent=4) #json.dump(data, outfile, indent=4)
-    s3object = s3.Object('tiktokbrands-bucket', f"{conta}_{today}.json")
+    s3object = s3.Object('tiktokbrands-bucket', f"{conta}_{today}_{hour}.json")
     s3object.put(Body=(json_file))
 
