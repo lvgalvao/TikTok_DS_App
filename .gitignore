@@ -1,5 +1,5 @@
 .venv
 __pycache__
-config.py
-client_secrets.json
+*config.py
+*secrets.json
 gspread
