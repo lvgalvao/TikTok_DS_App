@@ -5,9 +5,10 @@ class GoogleSheet:
     def __init__(self, sheet_name):
         self.sheet_name = sheet_name
         self.scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-        self.sa = gspread.service_account(filename="gspread/service_account.json")
+        self.sa = gspread.service_account(filename="app/gspread/service_account.json")
         self.sh = self.sa.open(SPREADSHEETS)
         self.sheet = self.sh.worksheet(WORKSHEET)
+        
 
     def get_row(self, row_number):
         return self.sheet.row_values(row_number)
