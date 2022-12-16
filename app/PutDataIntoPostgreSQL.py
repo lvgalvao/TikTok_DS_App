@@ -1,6 +1,6 @@
 import psycopg2
 import json
-from config import USER, PASSWORD
+from app.config import USER, PASSWORD
 from glob import glob
 
 # connect to the database
